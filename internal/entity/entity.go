@@ -3,8 +3,8 @@ package entity
 import "github.com/google/uuid"
 
 type Category struct {
-	ID   string
-	Name string
+	ID   string `json:"id"`
+	Name string `json:"name"`
 }
 
 func NewCategory(name string) *Category {
@@ -15,12 +15,12 @@ func NewCategory(name string) *Category {
 }
 
 type Product struct {
-	ID          string
-	Name        string
-	Description string
-	ImageURL    string
-	Price       float64
-	CategoryID  string
+	ID          string  `json:"id"`
+	Name        string  `json:"name"`
+	Description string  `json:"description"`
+	ImageURL    string  `json:"image_url"`
+	Price       float64 `json:"price"`
+	CategoryID  string  `json:"category_id"`
 }
 
 func NewProduct(name, description, imageURL, categoryID string, price float64) *Product {
