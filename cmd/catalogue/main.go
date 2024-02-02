@@ -4,32 +4,17 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/joho/godotenv"
 	"github.com/ormesino/e-commerce/internal/database"
 	"github.com/ormesino/e-commerce/internal/service"
 	"github.com/ormesino/e-commerce/internal/webserver"
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		panic(err.Error())
-	}
-
-	dbUser := os.Getenv("DB_USER")
-	dbPassword := os.Getenv("DB_PASSWORD")
-	dbHost := os.Getenv("DB_HOST")
-	dbPort := os.Getenv("DB_PORT")
-	dbName := os.Getenv("DB_NAME")
-
-	dbURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPassword, dbHost, dbPort, dbName)
-
-	db, err := sql.Open("mysql", dbURL)
+	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/ecommerce")
 	if err != nil {
 		panic(err.Error())
 	}
