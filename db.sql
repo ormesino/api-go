@@ -12,5 +12,5 @@ CREATE TABLE `products` (
   `image_url` varchar(255) NOT NULL,
   `category_id` varchar(36) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`)
+  KEY `fk_products_categories_idx` (`category_id`)
 );

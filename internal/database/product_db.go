@@ -24,8 +24,8 @@ func (pd *ProductDB) GetProducts() ([]*entity.Product, error) {
 	defer rows.Close()
 
 	var products []*entity.Product
-	var product entity.Product
 	for rows.Next() {
+		var product entity.Product
 		if err := rows.Scan(&product.ID, &product.Name, &product.Description, &product.ImageURL, &product.Price,
 			&product.CategoryID); err != nil {
 			return nil, err
@@ -47,8 +47,8 @@ func (pd *ProductDB) GetProductByCategoryID(categoryID string) ([]*entity.Produc
 	defer rows.Close()
 
 	var products []*entity.Product
-	var product entity.Product
 	for rows.Next() {
+		var product entity.Product
 		if err := rows.Scan(&product.ID, &product.Name, &product.Description,
 			&product.ImageURL, &product.Price, &product.CategoryID); err != nil {
 			return nil, err
@@ -82,5 +82,3 @@ func (pd *ProductDB) CreateProduct(product *entity.Product) (string, error) {
 
 	return product.ID, nil
 }
-
-// create the search function

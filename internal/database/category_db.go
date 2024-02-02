@@ -24,8 +24,8 @@ func (cd *CategoryDB) GetCategories() ([]*entity.Category, error) {
 	defer rows.Close()
 
 	var categories []*entity.Category
-	var category entity.Category
 	for rows.Next() {
+		var category entity.Category
 		if err := rows.Scan(&category.ID, &category.Name); err != nil {
 			return nil, err
 		}
